@@ -38,8 +38,14 @@ import sys
 # Add the path to your custom pytube folder
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), 'src', 'pytube'))
 
-# Now you can import pytube from the custom location
-from pytube import YouTube
+# Try importing pytube from the custom location
+try:
+    from pytube import YouTube
+    print("Successfully imported pytube from custom location.")
+except ImportError as e:
+    print(f"Error importing pytube: {e}")
+    # You can add any fallback actions or logging here if needed
+
 
 
 # Get the base64-encoded JSON key from Streamlit secrets
