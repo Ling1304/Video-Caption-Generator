@@ -6,12 +6,27 @@ from langchain_google_vertexai import ChatVertexAI
 from pytube import YouTube
 import tempfile
 import urllib.request
+import base64
+import os
 from dotenv import load_dotenv
 load_dotenv()
 
+# Get the base64-encoded JSON key from Streamlit secrets
+json_key_base64 = st.secrets["google"]["JSON_KEY"]
+
+# Get API from Streamlit secrets
+api = st.secrets["google"]["API"]
+
+# Decode the base64 string to json
+json_key = base64.b64decode(json_key_base64)
+
+# Save the decoded JSON key to a temporary file
+with open("service-account.json", "wb") as f:
+    f.write(json_key)
+
 # Get API and credentials
-os.environ['GOOGLE_API_KEY'] = os.getenv("GOOGLE_API_KEY")
-os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = os.getenv("GOOGLE_APPLICATION_CREDENTIALS")
+os.environ['GOOGLE_API_KEY'] = api
+os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = "service-account.json"
 
 # Initialize LLM 
 llm = ChatVertexAI(model="gemini-1.5-flash")
