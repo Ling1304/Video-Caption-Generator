@@ -1,5 +1,6 @@
 import os
 import streamlit as st
+from vertexai.generative_models._generative_models import SafetySetting
 from google.cloud import storage
 from langchain_core.messages import HumanMessage
 from langchain_google_vertexai import ChatVertexAI
@@ -9,7 +10,6 @@ import urllib.request
 import base64
 import os
 from dotenv import load_dotenv
-from vertexai.generative_models._generative_models import SafetySetting
 load_dotenv()
 
 # Get the base64-encoded JSON key from Streamlit secrets
