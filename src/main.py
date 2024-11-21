@@ -14,8 +14,16 @@ load_dotenv()
 import shutil
 import pytube
 
-# Paths to the fixed files
-fixed_files_dir = os.path.join("main", "pytube_fixed_files")
+import shutil
+import os
+import pytube
+import streamlit as st
+
+# Get the current working directory (root of the project)
+current_dir = os.path.dirname(os.path.abspath(__file__))
+
+# Paths to the fixed files (with absolute paths)
+fixed_files_dir = os.path.join(current_dir, "pytube_fixed_files")
 fixed_cipher = os.path.join(fixed_files_dir, "cipher.py")
 fixed_innertube = os.path.join(fixed_files_dir, "innertube.py")
 
@@ -28,10 +36,8 @@ target_innertube = os.path.join(pytube_dir, "innertube.py")
 try:
     shutil.copy(fixed_cipher, target_cipher)
     shutil.copy(fixed_innertube, target_innertube)
-    # print("Successfully replaced pytube files.")
     st.success("Successfully replaced pytube files.")
 except Exception as e:
-    # print(f"Error replacing files: {e}")
     st.error(f"Error replacing files: {e}")
 
 # Get the base64-encoded JSON key from Streamlit secrets
