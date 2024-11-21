@@ -1,0 +1,6 @@
+streamlit
+google-cloud-storage
+langchain-core
+langchain-google-vertexai
+pytube
+python-dotenv
