@@ -9,6 +9,7 @@ import urllib.request
 import base64
 import os
 from dotenv import load_dotenv
+from vertexai.generative_models._generative_models import SafetySetting
 load_dotenv()
 
 # Get the base64-encoded JSON key from Streamlit secrets
