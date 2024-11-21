@@ -41,9 +41,9 @@ sys.path.insert(0, os.path.join(os.path.dirname(__file__), 'src', 'pytube'))
 # Try importing pytube from the custom location
 try:
     from pytube import YouTube
-    print("Successfully imported pytube from custom location.")
+    st.success("Successfully imported pytube from custom location.")
 except ImportError as e:
-    print(f"Error importing pytube: {e}")
+    st.success(f"Error importing pytube: {e}")
     # You can add any fallback actions or logging here if needed
 
 
