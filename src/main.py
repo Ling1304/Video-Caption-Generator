@@ -28,9 +28,11 @@ target_innertube = os.path.join(pytube_dir, "innertube.py")
 try:
     shutil.copy(fixed_cipher, target_cipher)
     shutil.copy(fixed_innertube, target_innertube)
-    print("Successfully replaced pytube files.")
+    # print("Successfully replaced pytube files.")
+    st.success("Successfully replaced pytube files.")
 except Exception as e:
-    print(f"Error replacing files: {e}")
+    # print(f"Error replacing files: {e}")
+    st.error(f"Error replacing files: {e}")
 
 # Get the base64-encoded JSON key from Streamlit secrets
 json_key_base64 = st.secrets["google"]["JSON_KEY"]
