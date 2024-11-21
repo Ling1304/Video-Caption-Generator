@@ -4,41 +4,43 @@ from vertexai.generative_models._generative_models import SafetySetting
 from google.cloud import storage
 from langchain_core.messages import HumanMessage
 from langchain_google_vertexai import ChatVertexAI
-from pytube import YouTube
+# from pytube import YouTube
 import tempfile
 import urllib.request
 import base64
-import os
 from dotenv import load_dotenv
 load_dotenv()
 import shutil
-import pytube
 
-import shutil
-import os
-import pytube
-import streamlit as st
+# # Get the current working directory (root of the project)
+# current_dir = os.path.dirname(os.path.abspath(__file__))
 
-# Get the current working directory (root of the project)
-current_dir = os.path.dirname(os.path.abspath(__file__))
+# # Paths to the fixed files (with absolute paths)
+# fixed_files_dir = os.path.join(current_dir, "pytube_fixed_files")
+# fixed_cipher = os.path.join(fixed_files_dir, "cipher.py")
+# fixed_innertube = os.path.join(fixed_files_dir, "innertube.py")
 
-# Paths to the fixed files (with absolute paths)
-fixed_files_dir = os.path.join(current_dir, "pytube_fixed_files")
-fixed_cipher = os.path.join(fixed_files_dir, "cipher.py")
-fixed_innertube = os.path.join(fixed_files_dir, "innertube.py")
+# # Paths to pytube package
+# pytube_dir = os.path.dirname(pytube.__file__)
+# target_cipher = os.path.join(pytube_dir, "cipher.py")
+# target_innertube = os.path.join(pytube_dir, "innertube.py")
 
-# Paths to pytube package
-pytube_dir = os.path.dirname(pytube.__file__)
-target_cipher = os.path.join(pytube_dir, "cipher.py")
-target_innertube = os.path.join(pytube_dir, "innertube.py")
+# # Replace the files cipher and innertube
+# try:
+#     shutil.copy(fixed_cipher, target_cipher)
+#     shutil.copy(fixed_innertube, target_innertube)
+#     st.success("Successfully replaced pytube files.")
+# except Exception as e:
+#     st.error(f"Error replacing files: {e}")
 
-# Replace the files cipher and innertube
-try:
-    shutil.copy(fixed_cipher, target_cipher)
-    shutil.copy(fixed_innertube, target_innertube)
-    st.success("Successfully replaced pytube files.")
-except Exception as e:
-    st.error(f"Error replacing files: {e}")
+import sys
+
+# Add the path to your custom pytube folder
+sys.path.insert(0, os.path.join(os.path.dirname(__file__), 'src', 'pytube'))
+
+# Now you can import pytube from the custom location
+from pytube import YouTube
+
 
 # Get the base64-encoded JSON key from Streamlit secrets
 json_key_base64 = st.secrets["google"]["JSON_KEY"]
