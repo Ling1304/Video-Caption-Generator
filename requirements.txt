@@ -4,3 +4,4 @@ langchain-core
 langchain-google-vertexai
 pytube
 python-dotenv
+pydantic==2.8.2
