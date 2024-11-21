@@ -11,6 +11,26 @@ import base64
 import os
 from dotenv import load_dotenv
 load_dotenv()
+import shutil
+import pytube
+
+# Paths to the fixed files
+fixed_files_dir = os.path.join("main", "pytube_fixed_files")
+fixed_cipher = os.path.join(fixed_files_dir, "cipher.py")
+fixed_innertube = os.path.join(fixed_files_dir, "innertube.py")
+
+# Paths to pytube package
+pytube_dir = os.path.dirname(pytube.__file__)
+target_cipher = os.path.join(pytube_dir, "cipher.py")
+target_innertube = os.path.join(pytube_dir, "innertube.py")
+
+# Replace the files cipher and innertube
+try:
+    shutil.copy(fixed_cipher, target_cipher)
+    shutil.copy(fixed_innertube, target_innertube)
+    print("Successfully replaced pytube files.")
+except Exception as e:
+    print(f"Error replacing files: {e}")
 
 # Get the base64-encoded JSON key from Streamlit secrets
 json_key_base64 = st.secrets["google"]["JSON_KEY"]
