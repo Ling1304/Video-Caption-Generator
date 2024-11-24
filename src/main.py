@@ -91,7 +91,7 @@ def generate_caption(video_url):
     }
     text_message = {
         "type": "text",
-        "text": "Provide concise captions that describe the key visuals and actions in the video, giving enough context for the user to understand what is happening. Focus on summarizing the main events or scenes without going too much in detail. Do not include dialogue or subtitles unless they are visually important to the scene.",
+        "text": "Provide concise captions that describe the key visuals and actions in the video, giving enough context for the user to understand what is happening. Focus on summarizing the main events or scenes without going too much in detail. Do not include dialogue or subtitles unless they are visually important to the scene. Provide the captions in one sentence, not bullet points",
     }
 
     # Execute the prompt
